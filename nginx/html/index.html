@@ -3,101 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guadalquivir Cloud Tech: migración de webs corporativas a infraestructura en contenedores, segura y monitorizada.">
   <title>Guadalquivir Cloud Tech</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- 1 · CABECERA -->
+  <!-- CABECERA -->
   <header class="header">
-    <div class="logo">LOGO · Guadalquivir Cloud Tech</div>
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Guadalquivir Cloud Tech, inicio">
+        <svg class="logo-mark" width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">
+          <rect width="34" height="34" rx="9" fill="url(#lg)"/>
+          <path d="M7 21c3-4 5-4 8 0s5 4 8 0 3-3 4-2" stroke="#fff" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+          <path d="M7 14c3-4 5-4 8 0s5 4 8 0 3-3 4-2" stroke="#fff" stroke-opacity=".55" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+          <defs>
+            <linearGradient id="lg" x1="0" y1="0" x2="34" y2="34">
+              <stop stop-color="#0e7c86"/><stop offset="1" stop-color="#0a2540"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="logo-text">Guadalquivir <strong>Cloud Tech</strong></span>
+      </a>
 
-    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
-      <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true">
-        <path d="M1 2h20M1 8h20M1 14h20" stroke="#3c4043" stroke-width="2" stroke-linecap="round" fill="none"/>
-      </svg>
-    </button>
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+        <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true">
+          <path d="M1 2h20M1 8h20M1 14h20" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+      </button>
 
-    <nav class="nav" id="menu">
-      <a href="#servicios">Servicios</a>
-      <a href="#infraestructura">Infraestructura</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+      <nav class="nav" id="menu" aria-label="Principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#infraestructura">Infraestructura</a>
+        <a href="#contacto" class="nav-cta">Contacto</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <!-- 2 · HERO -->
+  <main id="top">
+    <!-- HERO -->
     <section class="hero">
       <div class="container hero-inner">
-        <span class="tag">SECCIÓN 1 · HERO</span>
-        <span class="eyebrow">Sprint 1 · PoC de Infraestructura</span>
-        <h1>Migración web corporativa, sin sorpresas</h1>
-        <div class="lines">
-          <div class="bar"></div>
-          <div class="bar short"></div>
+        <div class="hero-copy">
+          <span class="eyebrow"><i class="dot"></i> Sprint 1 · Prueba de concepto</span>
+          <h1>Migración web corporativa, <span class="accent">sin sorpresas</span></h1>
+          <p class="lead">Llevamos la web de tu empresa a una infraestructura en contenedores reproducible, endurecida y monitorizada. Lo que funciona en pruebas, funciona en producción.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#infraestructura">Ver la infraestructura</a>
+            <a class="btn btn-ghost" href="#servicios">Qué hacemos</a>
+          </div>
         </div>
-        <a class="btn" href="#infraestructura">Ver la infraestructura</a>
+
+        <div class="terminal" role="img" aria-label="Ejemplo de despliegue con Docker y respuesta de Nginx">
+          <div class="terminal-bar">
+            <span></span><span></span><span></span>
+            <em>gct-web · bash</em>
+          </div>
+<pre><code><span class="c-mute">$</span> docker compose up -d
+<span class="c-ok">✔</span> Container gct-web  <span class="c-ok">Started</span>
+
+<span class="c-mute">$</span> curl -I localhost:8080
+<span class="c-ok">HTTP/1.1 200 OK</span>
+Server: nginx/1.27
+Content-Type: text/html
+
+<span class="c-mute">$</span> <span class="cursor"></span></code></pre>
+        </div>
       </div>
     </section>
 
-    <!-- 3 · SERVICIOS -->
+    <!-- SERVICIOS -->
     <section id="servicios" class="section">
       <div class="container">
         <div class="section-head">
-          <h2>Servicios</h2>
-          <span class="tag">SECCIÓN 2 · 3 TARJETAS</span>
+          <span class="kicker">Servicios</span>
+          <h2>Todo lo que necesita tu web para vivir en la nube</h2>
+          <p>Tres pilares que cubren el ciclo completo: empaquetar, proteger y vigilar.</p>
         </div>
+
         <div class="grid">
           <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+            </div>
             <h3>Contenedores</h3>
-            <div class="bar"></div>
-            <div class="bar short"></div>
+            <p>Empaquetamos tu aplicación en imágenes ligeras y versionadas. El mismo entorno en desarrollo, pruebas y producción.</p>
           </article>
+
           <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
             <h3>Hardening</h3>
-            <div class="bar"></div>
-            <div class="bar short"></div>
+            <p>Configuración segura por defecto: contenido de solo lectura, superficie mínima expuesta y cabeceras de seguridad.</p>
           </article>
+
           <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+            </div>
             <h3>Observabilidad</h3>
-            <div class="bar"></div>
-            <div class="bar short"></div>
+            <p>Logs centralizados, métricas y alertas para detectar problemas antes de que los note un cliente.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- 4 · INFRAESTRUCTURA -->
+    <!-- INFRAESTRUCTURA -->
     <section id="infraestructura" class="section alt">
       <div class="container">
         <div class="section-head">
+          <span class="kicker">Prueba de concepto</span>
           <h2>Infraestructura validada</h2>
-          <span class="tag">SECCIÓN 3 · LISTA</span>
+          <p>Estos son los componentes que hemos desplegado y comprobado en el Sprint 1.</p>
         </div>
+
         <ul class="checklist">
-          <li>Servidor web: Nginx 1.27 sobre Alpine</li>
-          <li>Virtual Host propio (conf/default.conf)</li>
-          <li>Puerto expuesto: 8080 → 80</li>
-          <li>Contenido estático montado con :ro</li>
+          <li>
+            <span class="check" aria-hidden="true">✓</span>
+            <div><strong>Servidor web</strong><span>Nginx 1.27 sobre Alpine: imagen mínima y rápida.</span></div>
+            <code>nginx:1.27-alpine</code>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">✓</span>
+            <div><strong>Virtual Host propio</strong><span>Configuración independiente, versionada junto al código.</span></div>
+            <code>conf/default.conf</code>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">✓</span>
+            <div><strong>Puerto expuesto</strong><span>El host publica el 8080 y lo redirige al 80 del contenedor.</span></div>
+            <code>8080 → 80</code>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">✓</span>
+            <div><strong>Contenido estático</strong><span>Montado como solo lectura: el contenedor no puede modificarlo.</span></div>
+            <code>:ro</code>
+          </li>
         </ul>
       </div>
     </section>
 
-    <!-- 5 · CONTACTO -->
+    <!-- CONTACTO -->
     <section id="contacto" class="section">
       <div class="container">
-        <div class="section-head">
-          <h2>Contacto</h2>
-          <span class="tag">SECCIÓN 4 · TEXTO</span>
+        <div class="contact">
+          <div>
+            <span class="kicker">Contacto</span>
+            <h2>¿Hablamos de tu migración?</h2>
+            <p>Cuéntanos cómo es tu web hoy y te proponemos un plan por fases, con riesgos y plazos claros.</p>
+          </div>
+          <address class="contact-card">
+            <strong>Equipo de Operaciones</strong>
+            <span>Guadalquivir Cloud Tech</span>
+            <span>Sevilla, Andalucía</span>
+            <a class="btn btn-primary" href="mailto:operaciones@guadalquivircloud.example">Escribir al equipo</a>
+          </address>
         </div>
-        <p>Equipo de Operaciones · Guadalquivir Cloud Tech · Sevilla</p>
       </div>
     </section>
   </main>
 
-  <!-- 6 · PIE -->
+  <!-- PIE -->
   <footer class="footer">
-    © 2026 Guadalquivir Cloud Tech · PoC con fines formativos (2º DAW).
+    <div class="container footer-inner">
+      <span>© 2026 Guadalquivir Cloud Tech</span>
+      <span>PoC con fines formativos (2º DAW)</span>
+    </div>
   </footer>
 
   <script>
@@ -107,6 +178,13 @@
     btn.addEventListener('click', function () {
       var open = nav.classList.toggle('open');
       btn.setAttribute('aria-expanded', open);
+    });
+    // Cierra el menú al elegir una opción
+    nav.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
     });
   </script>
 </body>
