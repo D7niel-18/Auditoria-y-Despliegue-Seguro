@@ -1,0 +1,36 @@
+services:
+  # Servidor perimetral / Proxy Inverso / Web Server Estático
+  nginx-proxy:
+    image: nginx:1.25-alpine
+    container_name: srv-nginx-proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/html:/usr/share/nginx/html:ro
+      - ./nginx/logs:/var/log/nginx
+    networks:
+      - red-corp
+    depends_on:
+      - apache-app
+
+
+  # Servidor interno Apache
+  apache-app:
+    image: httpd:2.4-alpine
+    container_name: srv-apache-app
+    restart: unless-stopped
+    volumes:
+      - ./apache/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+      - ./apache/htdocs:/usr/local/apache2/htdocs:ro
+      - ./apache/logs:/usr/local/apache2/logs
+    networks:
+      - red-corp
+
+
+networks:
+  red-corp:
+    driver: bridge
+    ipam:
+      driver: default

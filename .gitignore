@@ -1,2 +1,6 @@
+# Registros de log (ignora el contenido de logs sin borrar las carpetas)
+*.log
 apache/logs/*
-nginx/
+!apache/logs/.gitkeep
+nginx/logs/*
+!nginx/logs/.gitkeep
