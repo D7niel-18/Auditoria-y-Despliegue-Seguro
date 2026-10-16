@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guadalquivir Cloud Tech</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- 1 · CABECERA -->
+  <header class="header">
+    <div class="logo">LOGO · Guadalquivir Cloud Tech</div>
+
+    <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <svg width="22" height="16" viewBox="0 0 22 16" aria-hidden="true">
+        <path d="M1 2h20M1 8h20M1 14h20" stroke="#3c4043" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+    </button>
+
+    <nav class="nav" id="menu">
+      <a href="#servicios">Servicios</a>
+      <a href="#infraestructura">Infraestructura</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 2 · HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="tag">SECCIÓN 1 · HERO</span>
+        <span class="eyebrow">Sprint 1 · PoC de Infraestructura</span>
+        <h1>Migración web corporativa, sin sorpresas</h1>
+        <div class="lines">
+          <div class="bar"></div>
+          <div class="bar short"></div>
+        </div>
+        <a class="btn" href="#infraestructura">Ver la infraestructura</a>
+      </div>
+    </section>
+
+    <!-- 3 · SERVICIOS -->
+    <section id="servicios" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Servicios</h2>
+          <span class="tag">SECCIÓN 2 · 3 TARJETAS</span>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>Contenedores</h3>
+            <div class="bar"></div>
+            <div class="bar short"></div>
+          </article>
+          <article class="card">
+            <h3>Hardening</h3>
+            <div class="bar"></div>
+            <div class="bar short"></div>
+          </article>
+          <article class="card">
+            <h3>Observabilidad</h3>
+            <div class="bar"></div>
+            <div class="bar short"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · INFRAESTRUCTURA -->
+    <section id="infraestructura" class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Infraestructura validada</h2>
+          <span class="tag">SECCIÓN 3 · LISTA</span>
+        </div>
+        <ul class="checklist">
+          <li>Servidor web: Nginx 1.27 sobre Alpine</li>
+          <li>Virtual Host propio (conf/default.conf)</li>
+          <li>Puerto expuesto: 8080 → 80</li>
+          <li>Contenido estático montado con :ro</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5 · CONTACTO -->
+    <section id="contacto" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contacto</h2>
+          <span class="tag">SECCIÓN 4 · TEXTO</span>
+        </div>
+        <p>Equipo de Operaciones · Guadalquivir Cloud Tech · Sevilla</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 6 · PIE -->
+  <footer class="footer">
+    © 2026 Guadalquivir Cloud Tech · PoC con fines formativos (2º DAW).
+  </footer>
+
+  <script>
+    // Menú móvil: muestra/oculta la navegación
+    var btn = document.querySelector('.menu-btn');
+    var nav = document.getElementById('menu');
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  </script>
+</body>
+</html>

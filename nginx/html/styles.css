@@ -1,0 +1,200 @@
+/* Wireframe · Guadalquivir Cloud Tech
+   Escala de grises. Escritorio por defecto, móvil por debajo de 700px. */
+
+:root {
+  --texto: #3c4043;
+  --titulo: #202124;
+  --borde: #9aa0a6;
+  --barra: #bdc1c6;
+  --fondo-claro: #f1f3f4;
+  --fondo-medio: #e8eaed;
+  --fondo-pie: #dadce0;
+  --mono: ui-monospace, Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--texto);
+  background: #fff;
+  line-height: 1.5;
+}
+
+a { color: var(--texto); }
+a:hover { color: var(--titulo); }
+
+.container { max-width: 1000px; margin: 0 auto; }
+
+/* Etiquetas de sección del wireframe */
+.tag {
+  border: 1px dashed #5f6368;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-family: var(--mono);
+  color: #5f6368;
+}
+
+/* Barras grises = texto de relleno */
+.bar { height: 12px; width: 100%; background: var(--barra); border-radius: 3px; }
+.bar.short { width: 75%; }
+
+/* 1 · Cabecera */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-height: 64px;
+  padding: 0 40px;
+  background: var(--fondo-claro);
+  border-bottom: 2px solid var(--texto);
+}
+
+.logo {
+  width: 220px;
+  height: 36px;
+  border: 2px dashed #5f6368;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #5f6368;
+}
+
+.nav { display: flex; gap: 28px; font-size: 15px; }
+
+.menu-btn {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--texto);
+  background: #fff;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* 2 · Hero */
+.hero { background: var(--fondo-medio); padding: 80px 40px; }
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #5f6368;
+}
+
+.hero h1 {
+  font-size: 44px;
+  line-height: 1.15;
+  color: var(--titulo);
+  max-width: 700px;
+}
+
+.lines { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 620px; }
+.lines .bar.short { width: 70%; }
+
+.btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 14px 28px;
+  border: 2px solid var(--titulo);
+  background: #fff;
+  color: var(--titulo);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.btn:hover { background: var(--fondo-claro); }
+
+/* 3-5 · Secciones */
+.section { padding: 56px 40px; }
+.section.alt { background: var(--fondo-claro); }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.section h2 { font-size: 28px; color: var(--titulo); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.card h3 { font-size: 18px; color: var(--titulo); }
+
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 16px; }
+.checklist li { display: flex; align-items: flex-start; gap: 12px; }
+.checklist li::before {
+  content: "";
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  border: 2px solid #5f6368;
+}
+
+/* 6 · Pie */
+.footer {
+  background: var(--fondo-pie);
+  border-top: 2px solid var(--texto);
+  padding: 24px 40px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Móvil */
+@media (max-width: 700px) {
+  .header { padding: 0 16px; }
+  .logo { width: 180px; }
+
+  .menu-btn { display: flex; }
+
+  .nav {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 0 16px;
+  }
+  .nav.open { display: flex; }
+
+  .hero { padding: 48px 24px; }
+  .hero h1 { font-size: 32px; }
+  .eyebrow { font-size: 12px; }
+  .btn { width: 100%; min-height: 48px; text-align: center; }
+
+  .section { padding: 40px 24px; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 20px; }
+  .section h2 { font-size: 24px; }
+  .grid { grid-template-columns: 1fr; gap: 16px; }
+  .card { padding: 20px; gap: 10px; }
+
+  .footer { padding: 24px; font-size: 13px; }
+}
