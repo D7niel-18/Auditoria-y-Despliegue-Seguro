@@ -1,36 +1,45 @@
 services:
-  # Servidor perimetral / Proxy Inverso / Web Server Estático
+  # Servicio 1: Nginx como proxy inverso
+  # Es el único que está "de cara al exterior" (recibe las peticiones del cliente)
   nginx-proxy:
-    image: nginx:1.25-alpine
-    container_name: srv-nginx-proxy
-    restart: unless-stopped
+    image: nginx:1.25-alpine        # Imagen oficial de nginx, versión alpine (es más ligera)
+    container_name: srv-nginx-proxy # Nombre del contenedor para identificarlo fácil con docker ps
+    restart: unless-stopped         # Se reinicia solo si se cae, a no ser que lo paremos nosotros a mano
     ports:
-      - "80:80"
+      - "80:80"                     # Puerto por el que accedemos desde el navegador
     volumes:
+      # Configuración de nginx ":ro" = solo lectura
       - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      # Carpeta con las páginas html estáticas (también en solo lectura)
       - ./nginx/html:/usr/share/nginx/html:ro
+      # Logs de nginx. Sin ":ro" porque nginx necesita escribir en ellos
       - ./nginx/logs:/var/log/nginx
     networks:
-      - red-corp
+      - red-corp                    # Lo conectamos a la red interna para que vea a apache
     depends_on:
-      - apache-app
+      - apache-app                  # Arranca después de apache (para que el proxy no falle al inicio)
 
+  # Servicio 2: Servidor interno Apache
+  # No expone ningún puerto al exterior, solo se accede a través de nginx
 
-  # Servidor interno Apache
   apache-app:
-    image: httpd:2.4-alpine
-    container_name: srv-apache-app
-    restart: unless-stopped
+    image: httpd:2.4-alpine         # Imagen oficial de Apache (httpd), también en versión alpine
+    container_name: srv-apache-app  # Nombre del contenedor
+    restart: unless-stopped         # Misma política de reinicio que nginx
     volumes:
+      # Fichero de configuración principal de Apache, montado en solo lectura
       - ./apache/conf/httpd.conf:/usr/local/apache2/conf/httpd.conf:ro
+      # Carpeta donde está la web (htdocs), también en solo lectura
       - ./apache/htdocs:/usr/local/apache2/htdocs:ro
+      # Logs de Apache (con escritura para que los pueda generar)
       - ./apache/logs:/usr/local/apache2/logs
     networks:
-      - red-corp
+      - red-corp                    # Misma red que nginx, así se pueden comunicar por el nombre del servicio
 
 
+# Redes
 networks:
-  red-corp:
-    driver: bridge
-    ipam:
-      driver: default
+  red-corp:                         # Red interna donde están los dos contenedores
+    driver: bridge                  # Tipo bridge: red privada dentro del host de Docker
+    ipam:                           # Gestión de IPs de la red
+      driver: default               # Dejamos que Docker asigne las IPs automáticamente
